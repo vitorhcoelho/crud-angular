@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
@@ -7,7 +6,8 @@ import { RouterOutlet } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesModule } from './courses/courses.module';
+import { CoursesRoutingModule } from './courses/courses-routing.module';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -16,11 +16,11 @@ import { CoursesModule } from './courses/courses.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoursesModule,
     BrowserAnimationsModule,
     MatToolbarModule,
     RouterOutlet,
-    HttpClientModule
+    CoursesRoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
