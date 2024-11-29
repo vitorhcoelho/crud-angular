@@ -9,7 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class CourseFormComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private readonly formBuilder: FormBuilder) {
     this.form = this.formBuilder.group({
       name: [null],
       category: [null],
