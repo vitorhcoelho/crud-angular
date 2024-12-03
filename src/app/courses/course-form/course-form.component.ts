@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-course-form',
   templateUrl: './course-form.component.html',
-  styleUrls: ['./course-form.component.css'],
+  styleUrls: ['./course-form.component.scss'],
 })
 export class CourseFormComponent implements OnInit {
   form: FormGroup;
@@ -16,7 +16,9 @@ export class CourseFormComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log()
+  }
 
   onSubmit() {}
 
