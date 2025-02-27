@@ -13,6 +13,7 @@ export class CoursesListComponent {
 
   @Input() courses: Course[] = [];
   @Output() add = new EventEmitter(false);
+  @Output() edit = new EventEmitter(false);
 
   constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
@@ -20,5 +21,9 @@ export class CoursesListComponent {
 
   onAdd() {
     this.add.emit(true);
+  }
+
+  onEdit(course: Course) {
+    this.edit.emit(course);
   }
 }
