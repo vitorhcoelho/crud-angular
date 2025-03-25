@@ -1,6 +1,6 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 
@@ -15,8 +15,8 @@ import { Course } from '../../model/course';
 export class CourseFormComponent implements OnInit {
   form = this.formBuilder.group({
     _id: [''],
-    name: [''],
-    category: [''],
+    name: ['', Validators.required],
+    category: ['', Validators.required],
   });
 
   constructor(
@@ -37,15 +37,20 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.save(this.form.value).subscribe({
-      next: (result) => {
-        this.onSuccess();
-      },
-      error: (error) => {
-        console.error(error);
-        this.onError();
-      },
-    });
+    if (this.form.valid) {
+      this.service.save(this.form.value).subscribe({
+        next: (result) => {
+          this.onSuccess();
+        },
+        error: (error) => {
+          console.error(error);
+          this.onError();
+        },
+      });
+    } else {
+      this.form.markAllAsTouched();
+      this.onError();
+    }
   }
 
   onCancel() {
