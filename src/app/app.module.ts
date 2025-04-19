@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterOutlet } from '@angular/router';
@@ -9,6 +8,7 @@ import { AppComponent } from './app.component';
 import { CoursesRoutingModule } from './courses/courses-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { AppMaterialModule } from './shared/app-material/app-material.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +18,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule,
+    AppMaterialModule,
     RouterOutlet,
     CoursesRoutingModule,
     SharedModule

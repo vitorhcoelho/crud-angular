@@ -26,14 +26,14 @@
     </form>
   </mat-card-content>
 
-  <mat-card-actions>
+  <mat-card-actions align="end">
+    <div class="action-buttons">
+      <button mat-raised-button (click)="onCancel()">Cancel</button>
+    </div>
     <div class="action-buttons">
       <button mat-raised-button color="primary" (click)="onSubmit()">
         Save
       </button>
-    </div>
-    <div class="action-buttons">
-      <button mat-raised-button (click)="onCancel()">Cancel</button>
     </div>
   </mat-card-actions>
 </mat-card>
