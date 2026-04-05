@@ -8,8 +8,8 @@
         <input matInput formControlName="name" #name />
         <mat-hint align="end">{{ name.value.length || 0 }} / 100</mat-hint>
         <mat-error *ngIf="form.get('name')?.invalid">{{
-          getErrorMessage("name")
-        }}</mat-error>
+          formUtils.getErrorMessage(form, "name")
+          }}</mat-error>
       </mat-form-field>
 
       <mat-form-field class="full-width">
@@ -20,9 +20,45 @@
           <mat-option value="Backend">Backend</mat-option>
         </mat-select>
         <mat-error *ngIf="form.get('category')?.invalid">{{
-          getErrorMessage("category")
-        }}</mat-error>
+          formUtils.getErrorMessage(form, "category")
+          }}</mat-error>
       </mat-form-field>
+
+      <mat-toolbar>
+        <span>Lessons</span>
+        <button mat-icon-button color="accent" (click)="addNewLesson()">
+          <mat-icon aria-label="Add a new lesson">add</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <mat-error *ngIf="formUtils.isFormArrayRequired(form, 'lessons')" class="form-array-error">Add at least one lesson</mat-error>
+
+      <table style="width: 100%;" formArrayName="lessons" *ngFor="let lesson of getLessonsFormArray(); let i = index">
+        <tr [formGroupName]="i">
+          <td style="width: 65%;">
+            <mat-form-field class="full-width">
+              <mat-label>Lesson name</mat-label>
+              <input matInput formControlName="name">
+              <mat-error *ngIf="getLessonsFormArray()[i].get('name')?.invalid">{{formUtils.getFormArrayFieldErrorMessage(form, 'lessons', 'name', i)}}</mat-error>
+            </mat-form-field>
+          </td>
+          <td style="width: 30%;">
+            <mat-form-field class="full-width">
+              <mat-label>URL</mat-label>
+              <span matPrefix>https://youtu.be/</span>
+              <input matInput formControlName="youtubeUrl">
+              <mat-error *ngIf="getLessonsFormArray()[i].get('youtubeUrl')?.invalid">{{formUtils.getFormArrayFieldErrorMessage(form, 'lessons', 'youtubeUrl', i)}}</mat-error>
+            </mat-form-field>
+          </td>
+
+          <td>
+            <button mat-icon-button color="warn" (click)="removeLesson(i)">
+              <mat-icon aria-label="Remove lesson">delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </table>
+
     </form>
   </mat-card-content>
 
