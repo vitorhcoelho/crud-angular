@@ -5,7 +5,6 @@ import { RouterOutlet } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CoursesRoutingModule } from './courses/courses-routing.module';
 import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { AppMaterialModule } from './shared/app-material/app-material.module';
@@ -20,7 +19,6 @@ import { AppMaterialModule } from './shared/app-material/app-material.module';
     BrowserAnimationsModule,
     AppMaterialModule,
     RouterOutlet,
-    CoursesRoutingModule,
     SharedModule
   ],
   providers: [
